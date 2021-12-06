@@ -1,0 +1,4 @@
+rootProject.name = 'study'
+include 'study-server'
+include 'study-client'
+
