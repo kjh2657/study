@@ -28,53 +28,12 @@ public class ApiCallController {
     @GetMapping("/http")
     public String http(){
 
-        try {
-
-            String apiURL = "http://localhost:8090/test";
-            String data = "?param=1";
-            apiURL += data;
-            URL url = new URL(apiURL);
-            HttpURLConnection con = (HttpURLConnection)url.openConnection();
-            con.setRequestMethod("GET");
-
-            // post request
-
-            BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-
-            String inputLine;
-            StringBuffer response = new StringBuffer();
-            while ((inputLine = br.readLine()) != null) {
-                response.append(inputLine);
-            }
-            br.close();
-            System.out.println(response.toString());
-
-            return response.toString();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return "error";
+        return apiCallService.http();
     }
 
     @GetMapping("/rest")
     public String rest(){
-        String apiURL = "http://localhost:8090/test";
-
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(apiURL)
-                .queryParam("param", 1);
-
-
-        HttpHeaders headers = new HttpHeaders();
-        HttpEntity entity = new HttpEntity<>(headers);
-
-        RestTemplate restTemplate = new RestTemplate();
-
-        ResponseEntity<String> responseEntity = restTemplate.exchange(builder.build().toString(), HttpMethod.GET, entity, String.class );
-
-
-        String result = responseEntity.getBody();
-
-        return result;
+        return apiCallService.rest();
     }
 
 
