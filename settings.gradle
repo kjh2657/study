@@ -1,4 +1,5 @@
 rootProject.name = 'study'
 include 'study-server'
 include 'study-client'
+include 'study-zuul'
 

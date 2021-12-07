@@ -1,0 +1,17 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: zuul-service
+
+ribbon:
+  eureka:
+    enabled: false
+
+zuul:
+  routes:
+    study-service:
+      path: /study/**
+      url: http://localhost:8001
+      stripPrefix: false
