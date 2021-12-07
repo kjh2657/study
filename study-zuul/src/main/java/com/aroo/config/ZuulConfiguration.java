@@ -1,5 +1,6 @@
 package com.aroo.config;
 
+import com.aroo.filter.FirstFilter;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
@@ -36,6 +37,13 @@ public class ZuulConfiguration {
         return new ZuulPostProcessor(routeLocator, zuulController, errorController);
     }
 
+    //first filter regist
+    @Bean
+    public FirstFilter firstFilter(){
+        return new FirstFilter();
+    }
+
+
     private static final class ZuulPostProcessor implements BeanPostProcessor {
 
         private final RouteLocator routeLocator;
@@ -64,6 +72,9 @@ public class ZuulConfiguration {
         }
 
     }
+
+
+
 
     private static enum LookupHandlerCallbackFilter implements CallbackFilter {
 

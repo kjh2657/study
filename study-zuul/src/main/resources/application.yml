@@ -5,9 +5,6 @@ spring:
   application:
     name: zuul-service
 
-ribbon:
-  eureka:
-    enabled: false
 
 zuul:
   routes:
